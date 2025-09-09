@@ -24,6 +24,7 @@ import java.util.UUID;
  */
 @RestController
 @RequestMapping("/api/pacientes")
+@CrossOrigin(origins = "http://localhost:4200") // Correção a ser aplicada para evitar o problema de Cors
 public class PacienteController {
 
     private final PacienteService pacienteService;
