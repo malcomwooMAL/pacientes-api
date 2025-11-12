@@ -87,8 +87,11 @@ public class PacienteService {
         pacienteExistente.setNome(pacienteDetails.getNome());
         pacienteExistente.setCpf(pacienteDetails.getCpf());
         pacienteExistente.setEmail(pacienteDetails.getEmail());
-        pacienteExistente.setTelefone(pacienteDetails.getTelefone());
+        pacienteExistente.setTelefoneWhatsapp(pacienteDetails.getTelefoneWhatsapp());
         pacienteExistente.setDataNascimento(pacienteDetails.getDataNascimento());
+        pacienteExistente.setDataUltimaConsulta(pacienteDetails.getDataUltimaConsulta());
+        pacienteExistente.setUltimoProcedimento(pacienteDetails.getUltimoProcedimento());
+        pacienteExistente.setDataUltimoContato(pacienteDetails.getDataUltimoContato());
 
         return pacienteRepository.save(pacienteExistente);
     }
