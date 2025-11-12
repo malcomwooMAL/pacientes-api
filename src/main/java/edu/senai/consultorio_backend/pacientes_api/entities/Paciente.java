@@ -43,24 +43,36 @@ public class Paciente {
     @Column(nullable = false, unique = true)
     private String email;
 
-    @Column(nullable = false, length = 15)
-    private String telefone;
+    @Column(name = "telefone_whatsapp", nullable = false, length = 15)
+    private String telefoneWhatsapp;
     
     @Column(name = "data_nascimento", nullable = false)
     private LocalDate dataNascimento;
+
+    @Column(name = "data_ultima_consulta")
+    private LocalDate dataUltimaConsulta;
+
+    @Column(name = "ultimo_procedimento")
+    private String ultimoProcedimento;
+
+    @Column(name = "data_ultimo_contato")
+    private LocalDate dataUltimoContato;
 
     // Construtor padrão exigido pelo JPA
     public Paciente() {
     }
 
     // Construtor para facilitar a criação de instâncias
-    public Paciente(UUID id, String nome, String cpf, String email, String telefone, LocalDate dataNascimento) {
+    public Paciente(UUID id, String nome, String cpf, String email, String telefoneWhatsapp, LocalDate dataNascimento, LocalDate dataUltimaConsulta, String ultimoProcedimento, LocalDate dataUltimoContato) {
         this.id = id;
         this.nome = nome;
         this.cpf = cpf;
         this.email = email;
-        this.telefone = telefone;
+        this.telefoneWhatsapp = telefoneWhatsapp;
         this.dataNascimento = dataNascimento;
+        this.dataUltimaConsulta = dataUltimaConsulta;
+        this.ultimoProcedimento = ultimoProcedimento;
+        this.dataUltimoContato = dataUltimoContato;
     }
 
     // Getters e Setters
@@ -96,12 +108,12 @@ public class Paciente {
         this.email = email;
     }
 
-    public String getTelefone() {
-        return telefone;
+    public String getTelefoneWhatsapp() {
+        return telefoneWhatsapp;
     }
 
-    public void setTelefone(String telefone) {
-        this.telefone = telefone;
+    public void setTelefoneWhatsapp(String telefoneWhatsapp) {
+        this.telefoneWhatsapp = telefoneWhatsapp;
     }
 
     public LocalDate getDataNascimento() {
@@ -110,6 +122,30 @@ public class Paciente {
 
     public void setDataNascimento(LocalDate dataNascimento) {
         this.dataNascimento = dataNascimento;
+    }
+
+    public LocalDate getDataUltimaConsulta() {
+        return dataUltimaConsulta;
+    }
+
+    public void setDataUltimaConsulta(LocalDate dataUltimaConsulta) {
+        this.dataUltimaConsulta = dataUltimaConsulta;
+    }
+
+    public String getUltimoProcedimento() {
+        return ultimoProcedimento;
+    }
+
+    public void setUltimoProcedimento(String ultimoProcedimento) {
+        this.ultimoProcedimento = ultimoProcedimento;
+    }
+
+    public LocalDate getDataUltimoContato() {
+        return dataUltimoContato;
+    }
+
+    public void setDataUltimoContato(LocalDate dataUltimoContato) {
+        this.dataUltimoContato = dataUltimoContato;
     }
 
     // Métodos equals e hashCode para comparações de objetos
