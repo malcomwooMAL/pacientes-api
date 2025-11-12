@@ -52,7 +52,7 @@ Este guia fornece as instruções para executar o banco de dados PostgreSQL nece
 
 ## Sobre a Configuração
 
-- **`image: postgres:13`**: Utiliza a imagem oficial do PostgreSQL na versão 13.
+- **`image: postgres:16`**: Utiliza a imagem oficial do PostgreSQL na versão 16.
 - **`environment`**: As variáveis de ambiente `POSTGRES_DB`, `POSTGRES_USER`, e `POSTGRES_PASSWORD` são usadas para criar o banco de dados e o usuário com a senha correspondente. **Estes valores correspondem exatamente aos que estão configurados no arquivo `application.properties` da aplicação Spring Boot.**
 - **`ports: - "5432:5432"`**: Mapeia a porta 5432 do seu computador (host) para a porta 5432 do contêiner, permitindo que a aplicação Spring Boot se conecte ao banco de dados através de `localhost:5432`.
 - **`volumes`**: Cria um volume chamado `postgres_data` para persistir os dados do banco de dados. Isso significa que, mesmo que você pare ou remova o contêiner, seus dados não serão perdidos.
