@@ -12,27 +12,22 @@ import java.util.List;
 import java.util.UUID;
 
 /**
- * Controller REST para a entidade Paciente.
- * Esta classe expõe os endpoints da API para realizar as operações de CRUD
- * sobre os pacientes. Ela recebe as requisições HTTP, aciona a camada de
- * serviço correspondente e retorna uma resposta HTTP adequada.
- *
- * @RestController Combina @Controller e @ResponseBody, simplificando a
- * criação de APIs RESTful.
- * @RequestMapping Define o prefixo da URL base para todos os endpoints
- * neste controller.
+ * REST Controller for the Patient entity.
+ * This class exposes API endpoints to perform CRUD operations on patients.
+ * It receives HTTP requests, triggers the corresponding service layer,
+ * and returns an appropriate HTTP response.
  */
 @RestController
 @RequestMapping("/api/pacientes")
-@CrossOrigin(origins = "http://localhost:4200") // Correção a ser aplicada para evitar o problema de Cors
+@CrossOrigin(origins = "http://localhost:4200")
 public class PacienteController {
 
     private final PacienteService pacienteService;
 
     /**
-     * Construtor para injeção de dependência do PacienteService.
+     * Constructor for dependency injection of PacienteService.
      *
-     * @param pacienteService A instância do serviço de pacientes.
+     * @param pacienteService The patient service instance.
      */
     @Autowired
     public PacienteController(PacienteService pacienteService) {
@@ -40,10 +35,10 @@ public class PacienteController {
     }
 
     /**
-     * Endpoint para listar todos os pacientes.
-     * Mapeado para a requisição GET em /api/pacientes.
+     * Endpoint to list all patients.
+     * Mapped to the GET request on /api/pacientes.
      *
-     * @return ResponseEntity contendo a lista de todos os pacientes e o status HTTP 200 (OK).
+     * @return ResponseEntity containing the list of all patients and HTTP status 200 (OK).
      */
     @GetMapping
     public ResponseEntity<List<Paciente>> listarTodos() {
@@ -52,11 +47,11 @@ public class PacienteController {
     }
 
     /**
-     * Endpoint para buscar um paciente pelo seu ID.
-     * Mapeado para a requisição GET em /api/pacientes/{id}.
+     * Endpoint to find a patient by their ID.
+     * Mapped to the GET request on /api/pacientes/{id}.
      *
-     * @param id O UUID do paciente a ser buscado.
-     * @return ResponseEntity contendo o paciente encontrado e o status HTTP 200 (OK).
+     * @param id The UUID of the patient to be fetched.
+     * @return ResponseEntity containing the found patient and HTTP status 200 (OK).
      */
     @GetMapping("/{id}")
     public ResponseEntity<Paciente> buscarPorId(@PathVariable UUID id) {
@@ -65,12 +60,12 @@ public class PacienteController {
     }
 
     /**
-     * Endpoint para cadastrar um novo paciente.
-     * Mapeado para a requisição POST em /api/pacientes.
+     * Endpoint to register a new patient.
+     * Mapped to the POST request on /api/pacientes.
      *
-     * @param paciente O objeto Paciente enviado no corpo da requisição.
-     * @return ResponseEntity com o status HTTP 201 (Created), o paciente criado
-     * no corpo da resposta e o cabeçalho 'Location' com a URL do novo recurso.
+     * @param paciente The Patient object sent in the request body.
+     * @return ResponseEntity with HTTP status 201 (Created), the created patient
+     * in the response body, and the 'Location' header with the URL of the new resource.
      */
     @PostMapping
     public ResponseEntity<Paciente> cadastrar(@RequestBody Paciente paciente) {
@@ -81,12 +76,12 @@ public class PacienteController {
     }
 
     /**
-     * Endpoint para atualizar os dados de um paciente existente.
-     * Mapeado para a requisição PUT em /api/pacientes/{id}.
+     * Endpoint to update the data of an existing patient.
+     * Mapped to the PUT request on /api/pacientes/{id}.
      *
-     * @param id O UUID do paciente a ser atualizado.
-     * @param pacienteDetails O objeto Paciente com os novos dados.
-     * @return ResponseEntity contendo o paciente atualizado e o status HTTP 200 (OK).
+     * @param id The UUID of the patient to be updated.
+     * @param pacienteDetails The Patient object with the new data.
+     * @return ResponseEntity containing the updated patient and HTTP status 200 (OK).
      */
     @PutMapping("/{id}")
     public ResponseEntity<Paciente> atualizar(@PathVariable UUID id, @RequestBody Paciente pacienteDetails) {
@@ -95,12 +90,12 @@ public class PacienteController {
     }
 
     /**
-     * Endpoint para deletar um paciente.
-     * Mapeado para a requisição DELETE em /api/pacientes/{id}.
+     * Endpoint to delete a patient.
+     * Mapped to the DELETE request on /api/pacientes/{id}.
      *
-     * @param id O UUID do paciente a ser deletado.
-     * @return ResponseEntity com o status HTTP 204 (No Content), indicando
-     * que a operação foi bem-sucedida, mas não há conteúdo para retornar.
+     * @param id The UUID of the patient to be deleted.
+     * @return ResponseEntity with HTTP status 204 (No Content), indicating
+     * that the operation was successful, but there is no content to return.
      */
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deletar(@PathVariable UUID id) {

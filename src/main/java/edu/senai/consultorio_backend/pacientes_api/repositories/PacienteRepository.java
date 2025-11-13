@@ -7,13 +7,13 @@ import org.springframework.stereotype.Repository;
 import java.util.UUID;
 
 /**
- * Interface Repository para a entidade Paciente.
- * Esta interface estende JpaRepository, fornecendo acesso a um conjunto completo
- * de métodos de persistência CRUD (Create, Read, Update, Delete) para a 
- * entidade Paciente, sem a necessidade de implementação manual. 
- * O Spring Data JPA se encarrega de criar a implementação em tempo de execução.
- * O primeiro parâmetro genérico, 'Paciente', especifica a entidade gerenciada,
- * enquanto o segundo, 'UUID', define o tipo da chave primária da entidade.
+ * Repository interface for the Patient entity.
+ * This interface extends JpaRepository, providing access to a complete set
+ * of CRUD (Create, Read, Update, Delete) persistence methods for the
+ * Patient entity, without the need for manual implementation.
+ * Spring Data JPA takes care of creating the implementation at runtime.
+ * The first generic parameter, 'Paciente', specifies the managed entity,
+ * while the second, 'UUID', defines the type of the entity's primary key.
  * @see org.springframework.data.jpa.repository.JpaRepository
  * @see edu.senai.consultorio_backend.pacientes_api.entities.Paciente
  */
@@ -21,9 +21,9 @@ import java.util.UUID;
 public interface PacienteRepository extends JpaRepository<Paciente, UUID> {
     
     /*
-     * Nenhum método precisa ser declarado aqui para as operações básicas de CRUD,
-     * pois são herdados de JpaRepository. Métodos de consulta customizados
-     * (Custom Query Methods) poderão ser adicionados futuramente, se necessário.
+     * No methods need to be declared here for basic CRUD operations,
+     * as they are inherited from JpaRepository. Custom Query Methods
+     * can be added in the future if necessary.
      * Ex: findByCpf(String cpf);
      */
     

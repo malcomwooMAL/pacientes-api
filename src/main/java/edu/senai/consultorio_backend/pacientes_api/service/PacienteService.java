@@ -11,12 +11,12 @@ import java.util.List;
 import java.util.UUID;
 
 /**
- * Classe de Serviço para a entidade Paciente.
- * Esta classe encapsula a lógica de negócio relacionada às operações de CRUD
- * para pacientes. Ela atua como uma camada intermediária entre o Controller
- * e o Repository, garantindo a separação de responsabilidades.
- * A anotação @Service a marca como um componente do Spring, tornando-a
- * elegível para injeção de dependência.
+ * Service class for the Patient entity.
+ * This class encapsulates the business logic related to CRUD operations
+ * for patients. It acts as an intermediate layer between the Controller
+ * and the Repository, ensuring the separation of responsibilities.
+ * The @Service annotation marks it as a Spring component, making it
+ * eligible for dependency injection.
  */
 @Service
 public class PacienteService {
@@ -24,11 +24,11 @@ public class PacienteService {
     private final PacienteRepository pacienteRepository;
 
     /**
-     * Construtor para injeção de dependência do PacienteRepository.
-     * O Spring injetará uma instância de PacienteRepository automaticamente.
-     * Esta é a forma recomendada de injeção de dependência (via construtor).
+     * Constructor for dependency injection of PacienteRepository.
+     * Spring will automatically inject an instance of PacienteRepository.
+     * This is the recommended way of dependency injection (via constructor).
      *
-     * @param pacienteRepository A instância do repositório de pacientes.
+     * @param pacienteRepository The patient repository instance.
      */
     @Autowired
     public PacienteService(PacienteRepository pacienteRepository) {
@@ -36,11 +36,11 @@ public class PacienteService {
     }
 
     /**
-     * Busca e retorna todos os pacientes cadastrados.
-     * A anotação @Transactional(readOnly = true) otimiza a consulta,
-     * indicando que esta é uma operação de apenas leitura.
+     * Retrieves and returns all registered patients.
+     * The @Transactional(readOnly = true) annotation optimizes the query,
+     * indicating that this is a read-only operation.
      *
-     * @return Uma lista de todos os objetos Paciente.
+     * @return A list of all Patient objects.
      */
     @Transactional(readOnly = true)
     public List<Paciente> listarTodos() {
@@ -48,11 +48,11 @@ public class PacienteService {
     }
 
     /**
-     * Busca um paciente pelo seu ID.
+     * Finds a patient by their ID.
      *
-     * @param id O UUID do paciente a ser buscado.
-     * @return O objeto Paciente correspondente ao ID.
-     * @throws EntityNotFoundException se nenhum paciente for encontrado com o ID fornecido.
+     * @param id The UUID of the patient to be fetched.
+     * @return The Patient object corresponding to the ID.
+     * @throws EntityNotFoundException if no patient is found with the provided ID.
      */
     @Transactional(readOnly = true)
     public Paciente buscarPorId(UUID id) {
@@ -61,28 +61,28 @@ public class PacienteService {
     }
 
     /**
-     * Cadastra um novo paciente no banco de dados.
+     * Registers a new patient in the database.
      *
-     * @param paciente O objeto Paciente a ser salvo.
-     * @return O objeto Paciente salvo, com o ID gerado.
+     * @param paciente The Patient object to be saved.
+     * @return The saved Patient object, with the generated ID.
      */
     @Transactional
     public Paciente cadastrar(Paciente paciente) {
-        // Futuramente, validações (ex: CPF único) podem ser adicionadas aqui.
+        // In the future, validations (e.g., unique CPF) can be added here.
         return pacienteRepository.save(paciente);
     }
 
     /**
-     * Atualiza os dados de um paciente existente.
+     * Updates the data of an existing patient.
      *
-     * @param id O UUID do paciente a ser atualizado.
-     * @param pacienteDetails O objeto Paciente com os novos dados.
-     * @return O objeto Paciente atualizado.
-     * @throws EntityNotFoundException se o paciente a ser atualizado não for encontrado.
+     * @param id The UUID of the patient to be updated.
+     * @param pacienteDetails The Patient object with the new data.
+     * @return The updated Patient object.
+     * @throws EntityNotFoundException if the patient to be updated is not found.
      */
     @Transactional
     public Paciente atualizar(UUID id, Paciente pacienteDetails) {
-        Paciente pacienteExistente = buscarPorId(id); // Reutiliza a busca por ID
+        Paciente pacienteExistente = buscarPorId(id); // Reuses the find by ID
         
         pacienteExistente.setNome(pacienteDetails.getNome());
         pacienteExistente.setCpf(pacienteDetails.getCpf());
@@ -97,10 +97,10 @@ public class PacienteService {
     }
 
     /**
-     * Deleta um paciente do banco de dados pelo seu ID.
+     * Deletes a patient from the database by their ID.
      *
-     * @param id O UUID do paciente a ser deletado.
-     * @throws EntityNotFoundException se o paciente a ser deletado não for encontrado.
+     * @param id The UUID of the patient to be deleted.
+     * @throws EntityNotFoundException if the patient to be deleted is not found.
      */
     @Transactional
     public void deletar(UUID id) {

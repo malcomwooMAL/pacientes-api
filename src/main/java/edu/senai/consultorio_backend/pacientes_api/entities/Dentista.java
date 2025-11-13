@@ -4,6 +4,10 @@ import jakarta.persistence.*;
 import java.util.Objects;
 import java.util.UUID;
 
+/**
+ * Represents a dentist entity.
+ * This class is mapped to the "dentistas" table in the database.
+ */
 @Entity
 @Table(name = "dentistas")
 public class Dentista {
@@ -18,38 +22,68 @@ public class Dentista {
     @Column(nullable = false)
     private String especialidade;
 
-    // Construtor padrão
+    /**
+     * Default constructor.
+     */
     public Dentista() {
     }
 
-    // Construtor com parâmetros
+    /**
+     * Constructs a new Dentista with the given parameters.
+     * @param id The ID of the dentist.
+     * @param nome The name of the dentist.
+     * @param especialidade The specialty of the dentist.
+     */
     public Dentista(UUID id, String nome, String especialidade) {
         this.id = id;
         this.nome = nome;
         this.especialidade = especialidade;
     }
 
-    // Getters e Setters
+    /**
+     * Gets the ID of the dentist.
+     * @return The ID of the dentist.
+     */
     public UUID getId() {
         return id;
     }
 
+    /**
+     * Sets the ID of the dentist.
+     * @param id The ID of the dentist.
+     */
     public void setId(UUID id) {
         this.id = id;
     }
 
+    /**
+     * Gets the name of the dentist.
+     * @return The name of the dentist.
+     */
     public String getNome() {
         return nome;
     }
 
+    /**
+     * Sets the name of the dentist.
+     * @param nome The name of the dentist.
+     */
     public void setNome(String nome) {
         this.nome = nome;
     }
 
+    /**
+     * Gets the specialty of the dentist.
+     * @return The specialty of the dentist.
+     */
     public String getEspecialidade() {
         return especialidade;
     }
 
+    /**
+     * Sets the specialty of the dentist.
+     * @param especialidade The specialty of the dentist.
+     */
     public void setEspecialidade(String especialidade) {
         this.especialidade = especialidade;
     }
