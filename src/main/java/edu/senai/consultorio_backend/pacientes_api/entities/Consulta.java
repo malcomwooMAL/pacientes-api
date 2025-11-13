@@ -5,6 +5,10 @@ import java.time.LocalDateTime;
 import java.util.Objects;
 import java.util.UUID;
 
+/**
+ * Represents an appointment entity.
+ * This class is mapped to the "consultas" table in the database.
+ */
 @Entity
 @Table(name = "consultas")
 public class Consulta {
@@ -24,11 +28,19 @@ public class Consulta {
     @Column(name = "data_hora", nullable = false)
     private LocalDateTime dataHora;
 
-    // Construtor padrão
+    /**
+     * Default constructor.
+     */
     public Consulta() {
     }
 
-    // Construtor com parâmetros
+    /**
+     * Constructs a new Consulta with the given parameters.
+     * @param id The ID of the appointment.
+     * @param paciente The patient associated with the appointment.
+     * @param dentista The dentist associated with the appointment.
+     * @param dataHora The date and time of the appointment.
+     */
     public Consulta(UUID id, Paciente paciente, Dentista dentista, LocalDateTime dataHora) {
         this.id = id;
         this.paciente = paciente;
@@ -36,35 +48,66 @@ public class Consulta {
         this.dataHora = dataHora;
     }
 
-    // Getters e Setters
+    /**
+     * Gets the ID of the appointment.
+     * @return The ID of the appointment.
+     */
     public UUID getId() {
         return id;
     }
 
+    /**
+     * Sets the ID of the appointment.
+     * @param id The ID of the appointment.
+     */
     public void setId(UUID id) {
         this.id = id;
     }
 
+    /**
+     * Gets the patient associated with the appointment.
+     * @return The patient associated with the appointment.
+     */
     public Paciente getPaciente() {
         return paciente;
     }
 
+    /**
+     * Sets the patient associated with the appointment.
+     * @param paciente The patient associated with the appointment.
+     */
     public void setPaciente(Paciente paciente) {
         this.paciente = paciente;
     }
 
+    /**
+     * Gets the dentist associated with the appointment.
+     * @return The dentist associated with the appointment.
+     */
     public Dentista getDentista() {
         return dentista;
     }
 
+    /**
+     * Sets the dentist associated with the appointment.
+     * @param dentista The dentist associated with the appointment.
+     */
     public void setDentista(Dentista dentista) {
         this.dentista = dentista;
     }
 
+    /**
+     * Gets the date and time of the appointment.
+     * @return The date and time of the appointment.
+     */
     public LocalDateTime getDataHora() {
         return dataHora;
     }
 
+    /**
+     * Sets the date and time of the appointment.
+     * @param dataHora The date and time of the appointment.
+     */
     public void setDataHora(LocalDateTime dataHora) {
         this.dataHora = dataHora;
     }
