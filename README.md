@@ -10,6 +10,15 @@ This project is a Spring Boot application that provides a RESTful API for managi
 * PostgreSQL
 * Spring Security (OAuth2/Opaque Token)
 
+## Documentation
+
+For detailed information about the changes, security implementation, and testing, please refer to the following documents:
+
+* [**MODIFICACOES.md**](MODIFICACOES.md): A summary of all changes, new features, and improvements made to the project.
+* [**SECURITY.md**](SECURITY.md): Detailed explanation of the OAuth 2.0 Resource Server implementation and security configuration.
+* [**TESTING.md**](TESTING.md): Guide on how to run tests, specifically addressing security considerations in controller tests.
+* [**API_ENDPOINTS.md**](API_ENDPOINTS.md): (If available) List of all available API endpoints.
+
 ## Setup
 
 1. **Clone the repository:**

@@ -28,10 +28,28 @@ A entidade `Paciente` foi atualizada para armazenar mais informações relevante
 
 ## 3. Segurança da API
 
-- **OAuth 2.0 Resource Server**: A aplicação foi configurada como um "Resource Server". Agora, todos os endpoints sob `/api/**` são protegidos e exigem um token de acesso (Bearer Token) válido para serem acessados.
-- **Configuração Centralizada**: A integração com o servidor de autorização (que é um serviço externo) é gerenciada através do arquivo `application.properties`, permitindo fácil alteração dos parâmetros (`introspection-uri`, `client-id`, `client-secret`) sem a necessidade de recompilar o código.
+A segurança foi implementada utilizando **Spring Security** e **OAuth 2.0**, configurando a aplicação como um Resource Server.
 
-## 4. Estrutura do Projeto
+- **OAuth 2.0 Resource Server**: A aplicação valida tokens opacos via introspecção.
+- **Proteção de Endpoints**: Todos os endpoints sob `/api/**` exigem autenticação.
+- **Dependências**: Adicionadas `spring-boot-starter-security` e `spring-boot-starter-oauth2-resource-server`.
+- **Configuração**:
+  - `SecurityConfig.java`: Define o `SecurityFilterChain` para autorizar requisições e configurar o servidor de recursos.
+  - `application.properties`: Gerencia credenciais e URI de introspecção (`introspection-uri`, `client-id`, `client-secret`).
+
+Para detalhes técnicos e de configuração, consulte [SECURITY.md](SECURITY.md).
+
+## 4. Testes Automatizados
+
+Os testes de controlador foram atualizados para suportar a camada de segurança:
+
+- **Simulação de Usuário**: Uso da anotação `@WithMockUser` para simular um usuário autenticado em testes de unidade (`@WebMvcTest`).
+- **Proteção CSRF**: Inclusão de tokens CSRF (`csrf()`) em requisições de modificação (POST, PUT, DELETE) nos testes.
+- **Mocking**: Serviços continuam sendo mockados (`@MockBean`) para isolar o teste da camada de dados.
+
+Para instruções de execução dos testes, consulte [TESTING.md](TESTING.md).
+
+## 5. Estrutura do Projeto
 
 A arquitetura do projeto foi mantida e expandida seguindo o padrão de camadas:
 - **`dto`**: Um novo pacote foi criado para abrigar Data Transfer Objects, como o `AgendamentoRequest.java`, melhorando o desacoplamento entre a API e o modelo de dados interno.
