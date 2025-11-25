@@ -1,8 +1,8 @@
-# Consultório Backend API
+# API Backend do Consultório
 
-This project is a Spring Boot application that provides a RESTful API for managing a dental clinic's appointments. It allows you to manage patients, dentists, and appointments.
+Este projeto é uma aplicação Spring Boot que fornece uma API RESTful para gerenciar agendamentos de um consultório odontológico. Permite gerenciar pacientes, dentistas e consultas.
 
-## Technologies Used
+## Tecnologias Utilizadas
 
 * Java 17
 * Spring Boot 3
@@ -10,61 +10,61 @@ This project is a Spring Boot application that provides a RESTful API for managi
 * PostgreSQL
 * Spring Security (OAuth2/Opaque Token)
 
-## Documentation
+## Documentação
 
-For detailed information about the changes, security implementation, and testing, please refer to the following documents:
+Para informações detalhadas sobre as alterações, implementação de segurança e testes, consulte os seguintes documentos:
 
-* [**MODIFICACOES.md**](MODIFICACOES.md): A summary of all changes, new features, and improvements made to the project.
-* [**SECURITY.md**](SECURITY.md): Detailed explanation of the OAuth 2.0 Resource Server implementation and security configuration.
-* [**TESTING.md**](TESTING.md): Guide on how to run tests, specifically addressing security considerations in controller tests.
-* [**API_ENDPOINTS.md**](API_ENDPOINTS.md): (If available) List of all available API endpoints.
+* [**MODIFICACOES.md**](MODIFICACOES.md): Um resumo de todas as alterações, novas funcionalidades e melhorias feitas no projeto.
+* [**SECURITY.md**](SECURITY.md): Explicação detalhada da implementação do Resource Server OAuth 2.0 e configuração de segurança.
+* [**TESTING.md**](TESTING.md): Guia sobre como executar testes, abordando especificamente considerações de segurança em testes de controladores.
+* [**API_ENDPOINTS.md**](API_ENDPOINTS.md): Lista de todos os endpoints da API disponíveis.
 
-## Setup
+## Configuração
 
-1. **Clone the repository:**
+1. **Clone o repositório:**
    ```bash
    git clone https://github.com/seu-usuario/consultorio-backend.git
    ```
 
-2. **Configure the database:**
-   - Make sure you have PostgreSQL installed and running.
-   - Create a database named `consultorio`.
-   - Update the `application.properties` file in `src/main/resources` with your database credentials:
+2. **Configure o banco de dados:**
+   - Certifique-se de ter o PostgreSQL instalado e rodando.
+   - Crie um banco de dados chamado `consultorio`.
+   - Atualize o arquivo `application.properties` em `src/main/resources` com as credenciais do seu banco de dados:
      ```properties
      spring.datasource.url=jdbc:postgresql://localhost:5432/consultorio
-     spring.datasource.username=your-username
-     spring.datasource.password=your-password
+     spring.datasource.username=seu-usuario
+     spring.datasource.password=sua-senha
      ```
 
-3. **Run the application:**
+3. **Execute a aplicação:**
    ```bash
    ./mvnw spring-boot:run
    ```
 
-## Usage
+## Uso
 
-The API provides the following endpoints:
+A API fornece os seguintes endpoints:
 
-### Patients
+### Pacientes
 
-* `GET /api/pacientes`: Get all patients.
-* `GET /api/pacientes/{id}`: Get a patient by ID.
-* `POST /api/pacientes`: Create a new patient.
-* `PUT /api/pacientes/{id}`: Update a patient.
-* `DELETE /api/pacientes/{id}`: Delete a patient.
+* `GET /api/pacientes`: Obter todos os pacientes.
+* `GET /api/pacientes/{id}`: Obter um paciente por ID.
+* `POST /api/pacientes`: Criar um novo paciente.
+* `PUT /api/pacientes/{id}`: Atualizar um paciente.
+* `DELETE /api/pacientes/{id}`: Deletar um paciente.
 
-### Dentists
+### Dentistas
 
-* `GET /api/dentistas`: Get all dentists.
-* `GET /api/dentistas/{id}`: Get a dentist by ID.
-* `POST /api/dentistas`: Create a new dentist.
-* `PUT /api/dentistas/{id}`: Update a dentist.
-* `DELETE /api/dentistas/{id}`: Delete a dentist.
+* `GET /api/dentistas`: Obter todos os dentistas.
+* `GET /api/dentistas/{id}`: Obter um dentista por ID.
+* `POST /api/dentistas`: Criar um novo dentista.
+* `PUT /api/dentistas/{id}`: Atualizar um dentista.
+* `DELETE /api/dentistas/{id}`: Deletar um dentista.
 
-### Appointments
+### Consultas
 
-* `POST /api/consultas/agendar`: Schedule a new appointment.
-* `DELETE /api/consultas/{id}`: Cancel an appointment.
-* `GET /api/consultas`: Get all appointments.
-* `GET /api/consultas/{id}`: Get an appointment by ID.
-* `GET /api/consultas/dentista/{dentistaId}?dia={dia}`: Get all appointments for a dentist on a specific day.
+* `POST /api/consultas/agendar`: Agendar uma nova consulta.
+* `DELETE /api/consultas/{id}`: Cancelar uma consulta.
+* `GET /api/consultas`: Obter todas as consultas.
+* `GET /api/consultas/{id}`: Obter uma consulta por ID.
+* `GET /api/consultas/dentista/{dentistaId}?dia={dia}`: Obter todas as consultas de um dentista em um dia específico.
